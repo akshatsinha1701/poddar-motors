@@ -1,8 +1,8 @@
-'use client'
+"use client";
 // ServiceCarousel.tsx
 
-import React, { useState } from 'react';
-import ServiceCard from './ServiceCard';
+import React, { useState } from "react";
+import ServiceCard from "./ServiceCard";
 
 interface Service {
   id: number;
@@ -11,12 +11,20 @@ interface Service {
 }
 
 const services: Service[] = [
-  { id: 1, title: 'Service 1', description: 'Description for Service 1' },
-  { id: 2, title: 'Service 2', description: 'Description for Service 2' },
-  { id: 3, title: 'Service 3', description: 'Description for Service 3' },
-  { id: 4, title: 'Service 4', description: 'Description for Service 4' },
-  { id: 5, title: 'Service 5', description: 'Description for Service 5' },
-  { id: 6, title: 'Service 6', description: 'Description for Service 6' },
+  {
+    id: 1,
+    title: "Wheel Alignment",
+    description: "Computerized wheel alignment",
+  },
+  {
+    id: 2,
+    title: " wheel balancing",
+    description: "Computerized wheel balancing",
+  },
+  { id: 3, title: "Washing", description: "Car wash with free polishing" },
+  { id: 4, title: "PMS", description: "32 point check" },
+  { id: 5, title: "Service 5", description: "Description for Service 5" },
+  { id: 6, title: "Service 6", description: "Description for Service 6" },
 ];
 
 const ServiceCarousel: React.FC = () => {
@@ -27,15 +35,26 @@ const ServiceCarousel: React.FC = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prevSlide) => (prevSlide - 1 + services.length) % services.length);
+    setCurrentSlide(
+      (prevSlide) => (prevSlide - 1 + services.length) % services.length
+    );
   };
 
   return (
     <div className="relative overflow-hidden">
-      <div className="flex" style={{ transform: `translateX(-${currentSlide * (100 / 3)}%)`, transition: 'transform 0.3s ease-in-out' }}>
+      <div
+        className="flex"
+        style={{
+          transform: `translateX(-${currentSlide * (100 / 3)}%)`,
+          transition: "transform 0.3s ease-in-out",
+        }}
+      >
         {services.map((service) => (
           <div key={service.id} className="flex-shrink-0 w-full sm:w-1/3 p-4">
-            <ServiceCard title={service.title} description={service.description} />
+            <ServiceCard
+              title={service.title}
+              description={service.description}
+            />
           </div>
         ))}
       </div>
